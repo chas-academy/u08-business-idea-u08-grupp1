@@ -26,3 +26,26 @@ async function fetchGymLocations() {
         return [];
     }
 }
+const gymComponent = () => {
+    const [gyms, setGyms] = useState([]);
+
+    useEffect(() => {
+        fetchGymLocations().then((gyms) => {
+            setGyms(gyms);
+        })
+        .catch((error) => {
+            console.error('Error setting gyms: ', error);
+        });
+    }, []);
+
+    return (
+        <div>
+            {/*render the markers*/}
+            {gyms.map(() => (
+                <MarkerF key={gym.gymName} position={gym.position} />
+            ))}
+        </div>
+    );
+};
+
+export default gymComponent;

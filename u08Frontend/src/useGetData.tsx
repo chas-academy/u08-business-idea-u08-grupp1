@@ -1,0 +1,1 @@
+// useGetData hook for converting JSON data (north / east - long / lat).

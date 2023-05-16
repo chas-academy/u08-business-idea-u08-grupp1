@@ -12,18 +12,21 @@ export const Map = () => {
 
 const MapRender = () => {
   const [position] = useGetGeolocation();
+  const location = [{lat: 43, lng: 32}, {lat: 23, lng: 32}, {lat: 44, lng: 86}, {lat: 65, lng: 32}]
 
   return (
     <>
-        <h2>{position.status}</h2>
-        <GoogleMap
-            zoom={10}
-            center={position.lat && position.lng ? {lat: position.lat, lng: position.lng} : {lat: 59.334591, lng: 18.063240}}
-            mapContainerClassName="h-40 w-60"
-        >
-          <MarkerF position={position.lat && position.lng ? {lat: position.lat, lng: position.lng} : {lat: 59.334591, lng: 18.063240}} onClick={() => {console.log("hi")}}/>
-          {[<MarkerF position={{lat: 34, lng: 76}} />, <MarkerF position={{lat: 23, lng: 43}} />, <MarkerF position={{lat: 55, lng: 22}}/>, <MarkerF position={{lat: 33, lng: 33}}/>]}  
-        </GoogleMap>
+      <h2>{position.status}</h2>
+      <GoogleMap
+          zoom={10}
+          center={position.lat && position.lng ? {lat: position.lat, lng: position.lng} : {lat: 59.334591, lng: 18.063240}}
+          mapContainerClassName="h-40 w-60 border-2"
+      >
+        <MarkerF position={position.lat && position.lng ? {lat: position.lat, lng: position.lng} : {lat: 59.334591, lng: 18.063240}} onClick={() => {console.log("hi")}}/>
+        {location.map((location, i) => (
+          <MarkerF key={i} position={location} onClick={() => {console.log("hi")}}/>
+         ))}  
+      </GoogleMap>
     </>
   )
 }

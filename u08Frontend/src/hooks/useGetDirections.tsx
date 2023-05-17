@@ -1,4 +1,4 @@
-const getDirections = () => {
+const useGetDirections = () => {
     const directionsService = new google.maps.DirectionsService();
 
     const origin = {lat: 32, lng: 45};
@@ -22,4 +22,5 @@ const getDirections = () => {
     } else {
       console.log('Please mark your destination in the map first!');
     }
+   
 };

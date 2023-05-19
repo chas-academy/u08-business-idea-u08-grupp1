@@ -1,26 +1,35 @@
-const useGetDirections = () => {
-    const directionsService = new google.maps.DirectionsService();
+import { useEffect, useState } from "react";
 
-    const origin = {lat: 32, lng: 45};
-    const destination = {lat: 35, lng: 47};
+export const useGetDirections = (position: {lat: number, lng: number}, location: {lat: number, lng: number}) => {
+  const [directionData, setDirectionData] = useState<any>();
 
-    if (origin !== null && destination !== null) {
-      directionsService.route(
-        {
-          origin: origin,
-          destination: destination,
-          travelMode: google.maps.TravelMode.DRIVING
-        },
-        (result, status) => {
-          if (status === google.maps.DirectionsStatus.OK) {
-            setDirection(result)
-          } else {
-            console.error(`error fetching directions ${result}`);
+  const getDirections = (origin: {lat: number, lng: number}, destination: {lat: number, lng: number}) => {
+      const directionsService = new google.maps.DirectionsService();
+  
+      if (origin !== null && destination !== null) {
+        directionsService.route(
+          {
+            origin: origin,
+            destination: destination,
+            travelMode: google.maps.TravelMode.DRIVING
+          },
+          (result, status) => {
+            if (status === google.maps.DirectionsStatus.OK) {
+              setDirectionData(result)
+            } else {
+              console.error(`error fetching directions ${result}`);
+            }
           }
-        }
-      );
-    } else {
-      console.log('Please mark your destination in the map first!');
-    }
-   
-};
+        );
+      } else {
+        console.log('Please mark your destination in the map first!');
+      } 
+  };
+
+  useEffect(() => {
+    if(location.lat !== 0 && location.lng !== 0)
+    getDirections(position, location);
+  }, [position, location]);
+
+  return [directionData];
+}

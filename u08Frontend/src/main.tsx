@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { Map } from './components/Map'
 
 const router = createBrowserRouter([
   {
@@ -9,7 +8,6 @@ const router = createBrowserRouter([
     element: (
       <>
         <h1>u08 - grupp 1</h1>
-        <Map></Map>
       </>
     )
   }

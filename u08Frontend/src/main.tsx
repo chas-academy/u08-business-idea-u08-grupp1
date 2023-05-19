@@ -2,12 +2,16 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
+import Navbar from './components/Navbar/Navbar'
+import Body from './components/Body/Body'
+
 const router = createBrowserRouter([
   {
     path: '/',
     element: (
       <>
-        <h1>u08 - grupp 1</h1>
+      < Navbar />
+      < Body />
       </>
     )
   }

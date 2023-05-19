@@ -1,5 +1,5 @@
 // useGetData hook for converting JSON data (north / east - long / lat).
-import React, { useEffect, useState } from 'react';
+/* import React, { useEffect, useState } from 'react';
 import MarkerF from './MarkerF'; 
 
 const apiURL = 'https://apigw.stockholm.se/NoAuth/VirtualhittaserviceDMZ/Rest/serviceunits?&filter%5Bservicetype.id%5D=122&page%5Blimit%5D=1500&page%5Boffset%5D=0&sort=name';
@@ -25,4 +25,4 @@ async function fetchGymLocations() {
         console.error('Error fetching gym locations: ', error);
         return [];
     }
-}
+} */

@@ -1,7 +1,7 @@
 const GymCards = () => {
   return (
-    <div className="flex flex-wrap justify-center space-x-4">
-      <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="flex flex-wrap justify-center">
+      <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5 mx-2">
         <div className="">
           <a href="#">
             <img
@@ -95,7 +95,7 @@ const GymCards = () => {
       </div>
 
 
-      <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5 mx-2">
         <div className="">
           <a href="#">
             <img
@@ -180,7 +180,7 @@ const GymCards = () => {
 
 
 
-      <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5 mx-2">
         <div className="">
           <a href="#">
             <img

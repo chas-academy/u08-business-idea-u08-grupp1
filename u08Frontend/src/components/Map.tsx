@@ -23,11 +23,10 @@ const MapRender = (props: { position: { lat: number; lng: number; }; location: {
   const [direction] = useGetDirections(props.position, destination);
 
   return (
-    <>
       <GoogleMap
         zoom={10}
         center={{lat: props.position.lat, lng: props.position.lng}}
-        mapContainerClassName="h-40 w-60 border-2"
+        mapContainerClassName="h-96 w-4/5 mx-auto"
       >
         <MarkerF position={{lat: props.position.lat, lng: props.position.lng}} onClick={() => {console.log("hi")}}/>
         {props.location.map((location, i) => (
@@ -37,7 +36,6 @@ const MapRender = (props: { position: { lat: number; lng: number; }; location: {
           directions={direction}
         />
       </GoogleMap>
-    </>
   )
 }
 

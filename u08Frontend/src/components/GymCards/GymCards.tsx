@@ -1,6 +1,6 @@
 import { useLoadScript } from "@react-google-maps/api";
 import { useGetGeolocation } from "../../hooks/useGetGeolocation"; 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const GymCards = () => {
   const [position] = useGetGeolocation();
@@ -10,55 +10,58 @@ const GymCards = () => {
   })
   
   const gymsRaw = [{name: "Erikdals utegym", address: "Hammarby Slussväg 20", coordinates: {lat: 59.30458182177627, lng: 18.073813674583473}}, {name: "Erikdals utegym", address: "Hammarby Slussväg 20", coordinates: {lat: 59.30458182177627, lng: 18.073813674583473}}, {name: "Erikdals utegym", address: "Hammarby Slussväg 20", coordinates: {lat: 59.30458182177627, lng: 18.073813674583473}}];
-
-  const calculateDistance = (origin: {lat: number, lng: number}, destination: {lat: number, lng: number}) => {
-    const directionsService = new google.maps.DirectionsService();
-  
-    return new Promise((resolve, reject) => {
-      if (origin !== null && destination !== null) {
-        directionsService.route(
-          {
-            origin: origin,
-            destination: destination,
-            travelMode: google.maps.TravelMode.DRIVING
-          },
-          (result, status) => {
-            if (status === google.maps.DirectionsStatus.OK) {
-              resolve(result?.routes[0].legs[0].distance?.value);
-            } else {
-              reject(`error fetching directions ${result}`);
+ 
+  useEffect(() => {
+    const calculateDistance = (origin: {lat: number, lng: number}, destination: {lat: number, lng: number}) => {
+      const directionsService = new google.maps.DirectionsService();
+    
+      return new Promise((resolve, reject) => {
+        if (origin !== null && destination !== null) {
+          directionsService.route(
+            {
+              origin: origin,
+              destination: destination,
+              travelMode: google.maps.TravelMode.DRIVING
+            },
+            (result, status) => {
+              if (status === google.maps.DirectionsStatus.OK) {
+                resolve(result?.routes[0].legs[0].distance?.value);
+              } else {
+                reject(`error fetching directions ${result}`);
+              }
             }
-          }
-        );
-      } else {
-        reject('Please mark your destination in the map first!');
-      }
-    });
-  }
+          );
+        } else {
+          reject('Please mark your destination in the map first!');
+        }
+      });
+    }
 
-  const calculateDistances = gymsRaw.map(data => calculateDistance(position, data.coordinates));
+    const calculateDistances = gymsRaw.map(data => calculateDistance(position, data.coordinates));
+  
+    Promise.all(calculateDistances)
+      .then(distances => {
+        const gymsData = distances.map((distance, index) => {
+          return {
+            name: gymsRaw[index].name,
+            address: gymsRaw[index].address,
+            distance: distance,
+          };
+        });
+        console.log(gymsData);
+        setGyms(gymsData);
+      })
+      .catch(error => console.error(error));
+  }, []);
 
-Promise.all(calculateDistances)
-  .then(distances => {
-    const gyms = distances.map((distance, index) => {
-      return {
-        name: gymsRaw[index].name,
-        address: gymsRaw[index].address,
-        distance: distance,
-      };
-    });
-    console.log(gyms);
-    setGyms(gyms)
-  })
-  .catch(error => console.error(error));
 
   if (!isLoaded || !position.lat) {
     return <div>Loading...</div>
   } else {
   return (
     <div className="flex flex-wrap justify-center">
-     {gyms.map((gym) => (
-         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5 mx-2">
+     {gyms.map((gym, i) => (
+         <div key={i} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5 mx-2">
          <div className="">
            <a href="#">
              <img

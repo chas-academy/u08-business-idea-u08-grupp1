@@ -7,11 +7,7 @@ export const Map = () => {
     const [position] = useGetGeolocation();
     const location = [{lat: 59.306668996308936, lng: 18.07325828184361}, {lat: 59.343450883376036, lng: 18.107933881057857}, {lat: 59.335222204218546, lng: 18.0478523972708}, {lat: 59.34161273436202, lng: 18.07085502249213}]
 
-    const { isLoaded } = useLoadScript({
-        googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY,
-    })
-
-    if (!isLoaded || !position.lat) {
+    if (!position.lat) {
       return <div>Loading...</div>
     } else {
       return <MapRender position={{lat: position.lat, lng: position.lng}} location={location}/>

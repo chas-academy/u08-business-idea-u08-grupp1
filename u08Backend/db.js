@@ -1,6 +1,6 @@
 const mongoose = require ("mongoose");
 
-const DB = "mongodb://localhost:27017/gyms";
+const DB = "mongodb+srv://StockholmsUteGym:StockholmsUteGym@utegyms.io2jxzi.mongodb.net/gyms";
 mongoose.connect(DB, { useNewUrlParser: true });
 const dbCon = mongoose.connection;
 dbCon.on("error", (err) => {

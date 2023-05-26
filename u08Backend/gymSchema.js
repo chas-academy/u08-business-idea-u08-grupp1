@@ -1,6 +1,6 @@
 const mongoose = require ("mongoose");
 
-const gymShcema = mongoose.Schema({
+const gymSchema = mongoose.Schema({
     gymId: {
         type: Number,
         required: true
@@ -27,4 +27,4 @@ const gymShcema = mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model("Gym", gymShcema);
+module.exports = mongoose.model("Gym", gymSchema);

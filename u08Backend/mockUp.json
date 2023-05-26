@@ -1,0 +1,29 @@
+{
+"gym1":
+    {
+        "gymId": 12756,
+        "name": "Akalla Gårds utegym",
+        "address": "Blablabla",
+        "location": "{lat: 59.41237446664166, lng: 17.91488068886686}",
+        "shortDescription": "Ett komplett gym",
+        "longDescription": "Ett komplett gym"
+    },
+"gym2":
+    {
+        "gymId": 12722,
+        "name": "Hässelby Gårds utegym",
+        "address": "Blablabla",
+        "location": "{lat: 59.41237433384166, lng: 17.91488068886686}",
+        "shortDescription": "Ett komplett gym",
+        "longDescription": "Ett komplett gym"
+    },
+"gym3":
+    {
+        "gymId": 12446,
+        "name": "Sätra utegym",
+        "address": "Blablabla",
+        "location": "{lat: 59.41111447584166, lng: 17.91488068886686}",
+        "shortDescription": "Ett komplett gym",
+        "longDescription": "Ett komplett gym"
+    }
+}

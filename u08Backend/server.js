@@ -38,7 +38,7 @@ app.get("/gyms/:gymId", async (req, res) => {
 //     const result = await rateGym(req.params.gymId, req.body);
 
 //     res.status(200).json({
-//     isRated: result.data
+//     isRated: isRated
 //     })
 // })
 

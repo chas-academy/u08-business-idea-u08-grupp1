@@ -3,7 +3,7 @@ import { useGetGeolocation } from "../../hooks/useGetGeolocation";
 import { useEffect, useState } from "react";
 
 const GymCards = () => {
-  const [position] = useGetGeolocation();
+  const [positionGym] = useGetGeolocation();
   const [gyms, setGyms] = useState([{}])
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY,
@@ -12,7 +12,9 @@ const GymCards = () => {
   const gymsRaw = [{name: "Erikdals utegym", address: "Hammarby Slussväg 20", coordinates: {lat: 59.30458182177627, lng: 18.073813674583473}}, {name: "Erikdals utegym", address: "Hammarby Slussväg 20", coordinates: {lat: 59.30458182177627, lng: 18.073813674583473}}, {name: "Erikdals utegym", address: "Hammarby Slussväg 20", coordinates: {lat: 59.30458182177627, lng: 18.073813674583473}}];
  
   useEffect(() => {
-    const calculateDistance = (origin: {lat: number, lng: number}, destination: {lat: number, lng: number}) => {
+    if(positionGym) {
+      console.log(positionGym)
+      const calculateDistance = (origin: {lat: number, lng: number}, destination: {lat: number, lng: number}) => {
       const directionsService = new google.maps.DirectionsService();
     
       return new Promise((resolve, reject) => {
@@ -37,7 +39,7 @@ const GymCards = () => {
       });
     }
 
-    const calculateDistances = gymsRaw.map(data => calculateDistance(position, data.coordinates));
+    const calculateDistances = gymsRaw.map(data => calculateDistance(positionGym, data.coordinates));
   
     Promise.all(calculateDistances)
       .then(distances => {
@@ -51,11 +53,11 @@ const GymCards = () => {
         console.log(gymsData);
         setGyms(gymsData);
       })
-      .catch(error => console.error(error));
-  }, []);
+      .catch(error => console.error(error));}
+  }, [positionGym]);
 
 
-  if (!isLoaded || !position.lat) {
+  if (!isLoaded || !positionGym.lat) {
     return <div>Loading...</div>
   } else {
   return (

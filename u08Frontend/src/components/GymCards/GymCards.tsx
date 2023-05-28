@@ -1,6 +1,7 @@
 import { useLoadScript } from "@react-google-maps/api";
 import { useGetGeolocation } from "../../hooks/useGetGeolocation"; 
 import { useEffect, useState } from "react";
+import axios, { AxiosResponse } from 'axios';
 
 const GymCards = () => {
   const [positionGym] = useGetGeolocation();
@@ -11,7 +12,30 @@ const GymCards = () => {
   
   const gymsRaw = [{name: "Erikdals utegym", address: "Hammarby Slussväg 20", coordinates: {lat: 59.30458182177627, lng: 18.073813674583473}}, {name: "Erikdals utegym", address: "Hammarby Slussväg 20", coordinates: {lat: 59.30458182177627, lng: 18.073813674583473}}, {name: "Erikdals utegym", address: "Hammarby Slussväg 20", coordinates: {lat: 59.30458182177627, lng: 18.073813674583473}}];
  
+  interface fetchGyms {
+    gymId: number;
+    name: string;
+    address: string;
+    location: string;
+    shortDescription: string;
+    longDescription: string;
+  }
+
+  const getGyms = async (): Promise<fetchGyms[]> => {
+    try {
+      const response: AxiosResponse<{ gyms: fetchGyms[] }> = await axios.get('http://localhost:4000/gyms');
+      const gyms: fetchGyms[] = response.data.gyms;
+      console.log(gyms);
+
+      return gyms;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+
   useEffect(() => {
+    getGyms();
     if(positionGym) {
       console.log(positionGym)
       const calculateDistance = (origin: {lat: number, lng: number}, destination: {lat: number, lng: number}) => {

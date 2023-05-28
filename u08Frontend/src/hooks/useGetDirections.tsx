@@ -5,7 +5,6 @@ export const useGetDirections = (position: {lat: number, lng: number}, location:
 
   const getDirections = (origin: {lat: number, lng: number}, destination: {lat: number, lng: number}) => {
       const directionsService = new google.maps.DirectionsService();
-  
       if (origin !== null && destination !== null) {
         directionsService.route(
           {

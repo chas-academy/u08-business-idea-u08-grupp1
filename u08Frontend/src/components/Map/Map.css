@@ -1,0 +1,14 @@
+.mapContainer {
+    height: 450px;
+    width: 62vw;
+    margin: auto;
+    padding-top: 30px  
+}
+
+@media (max-width: 913px) {
+    .mapContainer {
+        width: 100vw;
+        padding-top: 0px;
+        z-index: 0;
+    }
+}

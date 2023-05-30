@@ -3,7 +3,20 @@ const Gym = require ("./gymSchema");
 // GET ALL GYMS
 
 exports.getAllGyms = async () => {
-    const gyms = await Gym.find({});
+    const fetchedGyms = await Gym.find({});
+    const gyms = fetchedGyms.map(data => {
+        return {
+            id: data.gymId,
+            name: data.name,
+            address: data.address,
+            coordinates: {
+                lat: data.lat,
+                lng: data.lng
+            },
+            shortDescription: data.shortDescription,
+            description: data.longDescription
+        };
+    });
     return gyms;
 }
 

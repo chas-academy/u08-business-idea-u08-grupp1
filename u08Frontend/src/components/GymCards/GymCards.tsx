@@ -23,6 +23,8 @@ const GymCards = () => {
 
   const getGyms = async (): Promise<fetchGyms[]> => {
     try {
+      axios.defaults.headers.common['Origin'] = window.location.origin;
+
       const response: AxiosResponse<{ gyms: fetchGyms[] }> = await axios.get('http://localhost:4000/gyms');
       const gyms: fetchGyms[] = response.data.gyms;
       console.log(gyms);

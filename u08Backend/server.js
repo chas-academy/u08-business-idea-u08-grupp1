@@ -17,30 +17,49 @@ app.use(express.urlencoded({ extended: true }));
 // GET ALL GYMS
 
 app.get("/gyms", async (req, res) => {
-    const gyms = await getAllGyms();
-    res.status(200).json({
+    try {
+        const gyms = await getAllGyms();
+        res.status(200).json({
             gyms: gyms
         })
+    } catch (error) {
+        console.error("Unable to fetch gyms:", error);
+        res.status(500).json({ error: "Failed to fetch gyms!" });
+    }
 })
 
 // GET GYM ROUTE
 
 app.get("/gyms/:gymId", async (req, res) => {
-    const gym = await getGym(req.params.gymId);
-    res.status(200).json({
+    try {
+        const gym = await getGym(req.params.gymId);
+        if (!gym) {
+            return res.status(404).json({ error: "Gym not found..." });
+        }
+        res.status(200).json({
         gym: gym
-    })
+        })
+    } catch (error) {
+        console.error("Error fetching gym:", error);
+        res.status(500).json({ error: "Failed to fetch gym!" });
+    }
+    
 })
 
-// // RATE GYM ROUTE
+// RATE GYM ROUTE
 
 // app.put("/gyms/:gymId", async (req, res) => {
-//     const result = await rateGym(req.params.gymId, req.body);
-
-//     res.status(200).json({
-//     isRated: isRated
-//     })
-// })
+//     try {
+//       const result = await rateGym(req.params.gymId, req.body);
+//       if (!result) {
+//         return res.status(404).json({ error: "Unable to rate gym..." });
+//       }
+//       res.status(200).json({ isRated: result });
+//     } catch (error) {
+//       console.error("Error rating gym:", error);
+//       res.status(500).json({ error: "Failed to rate gym!." });
+//     }
+// });
 
 app.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT}`);

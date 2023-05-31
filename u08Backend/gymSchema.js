@@ -13,6 +13,14 @@ const gymSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    lat: {
+        type: Number,
+        required: true
+    },
+    lng: {
+        type: Number,
+        required: true
+    },
     location: {
         type: String,
         required: true

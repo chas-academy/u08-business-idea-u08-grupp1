@@ -1,0 +1,30 @@
+.gymBody {
+    background-color: #fff;
+    padding-top: 1px;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+}
+
+hr {
+    background-color: #006ebf;
+    width: 7vw;
+    height: 7px;
+    margin: auto;
+    margin-top: -15px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 913px) {
+    .gymBody {
+        background-color: #fff;
+        margin-top: -135px;
+        position: relative;
+        border-radius: 50px 50px 0 0;
+        padding-bottom: 40px;
+    }  
+}

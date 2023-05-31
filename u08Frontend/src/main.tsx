@@ -10,12 +10,11 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: (
-      <>
-      <h1>u08 - grupp 1</h1>
+      <div className="top">
       < Navbar />
       < Body />
       <Footer></Footer>
-      </>
+      </div>
     )
   }
 ])

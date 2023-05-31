@@ -1,6 +1,9 @@
 import { useLoadScript } from "@react-google-maps/api";
 import { useGetGeolocation } from "../../hooks/useGetGeolocation"; 
 import { useEffect, useState } from "react";
+import "./GymCards.css";
+import axios, { AxiosResponse } from 'axios';
+
 
 const GymCards = () => {
   const [positionGym] = useGetGeolocation();
@@ -11,7 +14,32 @@ const GymCards = () => {
   
   const gymsRaw = [{name: "Erikdals utegym", address: "Hammarby Slussväg 20", coordinates: {lat: 59.30458182177627, lng: 18.073813674583473}}, {name: "Erikdals utegym", address: "Hammarby Slussväg 20", coordinates: {lat: 59.30458182177627, lng: 18.073813674583473}}, {name: "Erikdals utegym", address: "Hammarby Slussväg 20", coordinates: {lat: 59.30458182177627, lng: 18.073813674583473}}];
  
+  interface fetchGyms {
+    gymId: number;
+    name: string;
+    address: string;
+    location: string;
+    shortDescription: string;
+    longDescription: string;
+  }
+
+  const getGyms = async (): Promise<fetchGyms[]> => {
+    try {
+      axios.defaults.headers.common['Origin'] = window.location.origin;
+
+      const response: AxiosResponse<{ gyms: fetchGyms[] }> = await axios.get('http://localhost:4000/gyms');
+      const gyms: fetchGyms[] = response.data.gyms;
+      console.log(gyms);
+
+      return gyms;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+
   useEffect(() => {
+    getGyms();
     if(positionGym) {
       console.log(positionGym)
       const calculateDistance = (origin: {lat: number, lng: number}, destination: {lat: number, lng: number}) => {
@@ -61,6 +89,10 @@ const GymCards = () => {
     return <div>Loading...</div>
   } else {
   return (
+
+    <div className="gymBody">
+      <h2>Nearby Gyms</h2>
+      <hr />
     <div className="flex flex-wrap justify-center">
      {gyms.map((gym, i) => (
          <div key={i} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5 mx-2">
@@ -157,6 +189,7 @@ const GymCards = () => {
          </div>
        </div>
       ))} 
+    </div>
     </div>
   );
 }

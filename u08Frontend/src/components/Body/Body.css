@@ -6,28 +6,13 @@
     background-color: #eee;
 }
 
-.gyms {
-    background-color: #fff;
-}
-
-h2 {
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-    margin: 20px 0;
-}
-
 @media (max-width: 913px) {
     .body {
         padding-top: 0;
     }
 
-    .gyms {
-        border-radius: 80px 80px 0 0;
-        background-color: #fff;
-        margin-top: -114px;
-        z-index: 10;
-    } 
-
-    
+    .map {
+       padding-bottom: 50px;
+       background-color: #45604d;
+    }
 }

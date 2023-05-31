@@ -17,13 +17,8 @@ const Body = () => {
             <Map />
         </div>
 
-        <div className="gyms">
-            <div className="nearbyGyms">
-                <h2>Nearby Gyms</h2>
-                <GymCards />
-            </div>
-        </div>
-        
+        <GymCards />
+       
         <div>
         <GroupCards />
         </div>

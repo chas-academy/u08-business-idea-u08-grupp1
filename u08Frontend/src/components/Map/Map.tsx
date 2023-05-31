@@ -37,13 +37,17 @@ const MapRender = (props: {
   const [destination, setDestination] = useState({ lat: 0, lng: 0 });
   const [direction] = useGetDirections(props.position, destination);
 
+  const mapContainerStyle = {
+    height:'100%'
+  };
+
   return (
     <div className="map">
     <div className="mapContainer">
       <GoogleMap
         zoom={10}
         center={{ lat: props.position.lat, lng: props.position.lng }}
-        mapContainerClassName="h-96"
+        mapContainerStyle={mapContainerStyle}
       >
         <MarkerF
           position={{ lat: props.position.lat, lng: props.position.lng }}

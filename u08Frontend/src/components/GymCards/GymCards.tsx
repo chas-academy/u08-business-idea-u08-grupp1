@@ -1,7 +1,9 @@
 import { useLoadScript } from "@react-google-maps/api";
 import { useGetGeolocation } from "../../hooks/useGetGeolocation"; 
 import { useEffect, useState } from "react";
+import "./GymCards.css";
 import axios, { AxiosResponse } from 'axios';
+
 
 const GymCards = () => {
   const [positionGym] = useGetGeolocation();
@@ -87,6 +89,10 @@ const GymCards = () => {
     return <div>Loading...</div>
   } else {
   return (
+
+    <div className="gymBody">
+      <h2>Nearby Gyms</h2>
+      <hr />
     <div className="flex flex-wrap justify-center">
      {gyms.map((gym, i) => (
          <div key={i} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5 mx-2">
@@ -183,6 +189,7 @@ const GymCards = () => {
          </div>
        </div>
       ))} 
+    </div>
     </div>
   );
 }

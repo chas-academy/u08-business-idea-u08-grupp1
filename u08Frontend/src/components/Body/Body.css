@@ -1,0 +1,19 @@
+.body {
+    padding-top: 10vh;
+}
+
+.map {
+    background-color: #eee;
+}
+
+@media (max-width: 913px) {
+    .body {
+        padding-top: 0;
+    }
+
+
+    .map {
+       padding-bottom: 50px;
+       background-color: #45604d;
+    }
+}

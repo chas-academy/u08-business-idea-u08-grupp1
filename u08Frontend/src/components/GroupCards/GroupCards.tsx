@@ -13,8 +13,7 @@ const GroupCards = () => {
         <p className="name">Arron Reed</p>
         <p>FullStack Developer</p>
         <p>
-          Not just a pretty face, Arron can fix any problem that comes his way
-          as well as cook a mean lasagne!
+        He possesses a laugh that rivals a hyena's. It's infectious, and heard from miles away. If Arron finds something funny, you'll know, even if you're in a different time zone.
         </p>
         <div className="socials">
           <button className="github">
@@ -34,10 +33,9 @@ const GroupCards = () => {
           <img src="/src/assets/images/Fredrik-Gullin.jfif" alt="Fredrik Gullin" />
         </div>
         <p className="name">Fredrik Gullin</p>
-        <p>FullStack Developer</p>
+        <p>ScumMaster</p>
         <p>
-          Not just a pretty face, Arron can fix any problem that comes his way
-          as well as cook a mean lasagne!
+        The Air Guitar enthusiast taking music to a whole new level. With his imaginary crowd, you question whether his talent lies in music or the power of imagination.
         </p>
         <div className="socials">
           <button className="github">
@@ -59,7 +57,7 @@ const GroupCards = () => {
         <p className="name">Victor Hedegran</p>
         <p>FullStack Developer</p>
         <p>
-          "Won't need problem solving if no problems are created" Has mastered the art of sourdough!
+        The human hot sauce detector. He can taste the slightest hint of spice in any dish, even when it's claimed to be mild. Scoville scale? Victor's taste buds have a scale of it own. 
         </p>
         <div className="socials">
           <button className="github">
@@ -81,8 +79,7 @@ const GroupCards = () => {
         <p className="name">Malin Bragazzi</p>
         <p>FullStack Developer</p>
         <p>
-          Not just a pretty face, Arron can fix any problem that comes his way
-          as well as cook a mean lasagne!
+        The woman with an inexplicable power to attract stray cats. If she's in the park or walking down the street, feline friends seem magnetically drawn to her.
         </p>
         <div className="socials">
           <button className="github">
@@ -104,8 +101,7 @@ const GroupCards = () => {
         <p className="name">Khadizatul Qubra</p>
         <p>FullStack Developer</p>
         <p>
-          Not just a pretty face, Arron can fix any problem that comes his way
-          as well as cook a mean lasagne!
+        Khadiza has a photographic memory, but only for song lyrics. She can flawlessly recite every '90s pop hit' but will forget your name seconds after meeting you!
         </p>
         <div className="socials">
           <button className="github">
@@ -127,8 +123,7 @@ const GroupCards = () => {
         <p className="name">Vincent Wigardt</p>
         <p>FullStack Developer</p>
         <p>
-          Not just a pretty face, Arron can fix any problem that comes his way
-          as well as cook a mean lasagne!
+        The man blessed with the ability to perfectly mimic the sound of a trombone with his armpit. His talent leaves audiences in awe trying to perform their own notes.
         </p>
         <div className="socials">
           <button className="github">

@@ -15,10 +15,10 @@ const GymCards = () => {
   const gymsRaw = [{name: "Erikdals utegym", address: "Hammarby Slussväg 20", coordinates: {lat: 59.30458182177627, lng: 18.073813674583473}}, {name: "Erikdals utegym", address: "Hammarby Slussväg 20", coordinates: {lat: 59.30458182177627, lng: 18.073813674583473}}, {name: "Erikdals utegym", address: "Hammarby Slussväg 20", coordinates: {lat: 59.30458182177627, lng: 18.073813674583473}}];
  
   interface fetchGyms {
-    gymId: number;
+    id: number;
     name: string;
     address: string;
-    location: string;
+    coordinates: {lat: number, lng: number};
     shortDescription: string;
     longDescription: string;
   }
@@ -30,7 +30,6 @@ const GymCards = () => {
       const response: AxiosResponse<{ gyms: fetchGyms[] }> = await axios.get('http://localhost:4000/gyms');
       const gyms: fetchGyms[] = response.data.gyms;
       console.log(gyms);
-
       return gyms;
     } catch (error) {
       console.error(error);
@@ -38,51 +37,48 @@ const GymCards = () => {
     }
   }
 
-  useEffect(() => {
-    getGyms();
-    if(positionGym) {
-      console.log(positionGym)
-      const calculateDistance = (origin: {lat: number, lng: number}, destination: {lat: number, lng: number}) => {
-      const directionsService = new google.maps.DirectionsService();
-    
-      return new Promise((resolve, reject) => {
-        if (origin !== null && destination !== null) {
-          directionsService.route(
-            {
-              origin: origin,
-              destination: destination,
-              travelMode: google.maps.TravelMode.DRIVING
-            },
-            (result, status) => {
-              if (status === google.maps.DirectionsStatus.OK) {
-                resolve(result?.routes[0].legs[0].distance?.value);
-              } else {
-                reject(`error fetching directions ${result}`);
-              }
-            }
-          );
-        } else {
-          reject('Please mark your destination in the map first!');
-        }
-      });
-    }
-
-    const calculateDistances = gymsRaw.map(data => calculateDistance(positionGym, data.coordinates));
+  const getImage = async (id: number) => {
+    const response = await fetch(`https://apigw.stockholm.se/noauth/virtualhittaservicedmz/rest/serviceunits/${id}/image`);
+    const jsonData = await response.json();
+    return jsonData.data.attributes.base64Data;
+  }
   
-    Promise.all(calculateDistances)
-      .then(distances => {
-        const gymsData = distances.map((distance, index) => {
+  useEffect(() => {
+    if(positionGym.lat !== 0) {
+      getGyms().then(async result => {
+        console.log(positionGym)
+        const calculateDistance = (origin: {lat: number, lng: number}, destination: {lat: number, lng: number}) => {
+        
+        const R = 6371e3; // metres
+        const φ1 = origin.lat * Math.PI/180; // φ, λ in radians
+        const φ2 = destination.lat * Math.PI/180;
+        const Δφ = (destination.lat-origin.lat) * Math.PI/180;
+        const Δλ = (destination.lng-origin.lng) * Math.PI/180;
+
+        const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+                  Math.cos(φ1) * Math.cos(φ2) *
+                  Math.sin(Δλ/2) * Math.sin(Δλ/2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+        const d = R * c; // in metres
+        return d;
+      }
+
+      const images = await Promise.all(result.map(data => getImage(data.id)));
+
+      const gymsData = result.map((data, index) => {
           return {
-            name: gymsRaw[index].name,
-            address: gymsRaw[index].address,
-            distance: distance,
-          };
-        });
-        console.log(gymsData);
-        setGyms(gymsData);
+            name: data.name,
+            address: data.address,
+            distance: calculateDistance(positionGym, data.coordinates),
+            imageData: images[index]
+          }
       })
-      .catch(error => console.error(error));}
-  }, [positionGym]);
+      setGyms(gymsData)
+      console.log(gyms)
+    });
+  }
+}, [positionGym]);
 
 
   if (!isLoaded || !positionGym.lat) {
@@ -100,7 +96,7 @@ const GymCards = () => {
            <a href="#">
              <img
                className=" rounded-t-lg"
-               src="/src/assets/images/eriksdal.jpeg"
+               src={`data:image/jpeg;base64,${gym.imageData}`}
                alt="product image"
              />
            </a>

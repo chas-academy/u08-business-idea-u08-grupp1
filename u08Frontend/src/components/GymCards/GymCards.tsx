@@ -11,8 +11,6 @@ const GymCards = () => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY,
   })
-  
-  const gymsRaw = [{name: "Erikdals utegym", address: "Hammarby Slussväg 20", coordinates: {lat: 59.30458182177627, lng: 18.073813674583473}}, {name: "Erikdals utegym", address: "Hammarby Slussväg 20", coordinates: {lat: 59.30458182177627, lng: 18.073813674583473}}, {name: "Erikdals utegym", address: "Hammarby Slussväg 20", coordinates: {lat: 59.30458182177627, lng: 18.073813674583473}}];
  
   interface fetchGyms {
     id: number;
@@ -64,9 +62,9 @@ const GymCards = () => {
         return d;
       }
 
-      const images = await Promise.all(result.map(data => getImage(data.id)));
+      const images = await Promise.all(result.slice(0, 9).map(data => getImage(data.id)));
 
-      const gymsData = result.map((data, index) => {
+      const gymsData = result.slice(0, 9).map((data, index) => {
           return {
             name: data.name,
             address: data.address,

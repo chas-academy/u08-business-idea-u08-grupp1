@@ -4,7 +4,7 @@ const GroupCards = () => {
   return (
     <div className="team">
         <h2>Meet The Team</h2>
-        <hr />
+        <hr className="titleHR" />
     <div className="groupCards">
       <div className="card">
         <div className="card-image">

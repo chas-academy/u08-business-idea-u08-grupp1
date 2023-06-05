@@ -3,10 +3,12 @@ import { useGetGeolocation } from "../../hooks/useGetGeolocation";
 import { useEffect, useState } from "react";
 import "./GymCards.css";
 import axios, { AxiosResponse } from "axios";
+import { useClickedCardStore } from "../../stores/useClickedCardStore";
 
 const GymCards = () => {
   const [positionGym] = useGetGeolocation();
   const [gyms, setGyms] = useState([{}]);
+  const [id] = useClickedCardStore((state:any) => [state.id]);
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY,
   })
@@ -91,6 +93,7 @@ const GymCards = () => {
     return (
       <div className="gymBody">
         <h2>Nearby Gyms</h2>
+        <h3>{id}</h3>
         <hr className="titleHR" />
           <div className="gymCardsBody">
             {gyms.map((gym, i) => (
@@ -113,8 +116,7 @@ const GymCards = () => {
 
                   <div className="shortDescription">
                     <p>
-                      Lorem ipsum bla de blaops, here were are wrint some text that
-                      could be from the database.
+                      {gym.shortDescription}
                     </p>
                   </div>
 

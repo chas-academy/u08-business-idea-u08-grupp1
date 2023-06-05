@@ -9,6 +9,7 @@ import { useGetDirections } from "../../hooks/useGetDirections";
 import { useEffect, useState } from "react";
 import "./Map.css"
 import axios, { AxiosResponse } from "axios";
+import { useClickedCardStore } from "../../stores/useClickedCardStore";
 
 export const Map = () => {
   const [position] = useGetGeolocation();
@@ -29,6 +30,7 @@ const MapRender = (props: {
 }) => {
   const [destination, setDestination] = useState({ lat: 0, lng: 0 });
   const [direction] = useGetDirections(props.position, destination);
+  const [setId] = useClickedCardStore((state:any) => [state.setId]);
   const [gyms, setGyms] = useState([{}]);
 
   const mapContainerStyle = {
@@ -94,6 +96,8 @@ const MapRender = (props: {
             position={gym.coordinates}
             onClick={() => {
               setDestination(gym.coordinates);
+              setId(gym.id)
+              console.log(gym.id)
             }}
           />
         ))}

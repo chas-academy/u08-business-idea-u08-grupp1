@@ -3,21 +3,24 @@ import GymCards from "../GymCards/GymCards";
 import GroupCards from "../GroupCards/GroupCards";
 import { Map } from "../Map/Map";
 import "./Body.css";
+import { useGetData } from "../../hooks/useGetData";
 
 const Body = () => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY,
   });
-  if (!isLoaded) {
+
+  const [data] = useGetData();
+  if (!data.loaded || !isLoaded) {
     return <div>Loading...</div>;
   } else {
     return (
       <div className="body">
         <div className="map">
-            <Map />
+            <Map gyms={data.gyms}/>
         </div>
 
-        <GymCards />
+        <GymCards gyms={data.gyms}/>
        
         <div>
         <GroupCards />

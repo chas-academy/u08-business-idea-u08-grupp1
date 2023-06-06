@@ -1,103 +1,29 @@
 import { useLoadScript } from "@react-google-maps/api";
-import { useGetGeolocation } from "../../hooks/useGetGeolocation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./GymCards.css";
-import axios, { AxiosResponse } from "axios";
 import { useClickedCardStore } from "../../stores/useClickedCardStore";
 
-const GymCards = () => {
-  const [positionGym] = useGetGeolocation();
-  const [gyms, setGyms] = useState([{}]);
+const GymCards = (props: { gyms: {
+  id: number,
+  name: string,
+  address: string,
+  distance: number,
+  coordinates: { lat: number, lng: number },
+  imageData: string,
+  shortDescription: string,
+  description: string,
+}[] }) => {
+  
   const [id] = useClickedCardStore((state: any) => [state.id]);
   // sets the ID of the gymCard when button is clicked and <dialog> is Open 
-  const [gymCardOpen, setGymCardOpen] = useState(null);
+  const [gymCardOpen, setGymCardOpen] = useState(0);
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY,
   });
 
-  interface fetchGyms {
-    id: number;
-    name: string;
-    address: string;
-    coordinates: { lat: number; lng: number };
-    shortDescription: string;
-    description: string;
-  }
+  /* onClick={() => getDirections()} */ // onclick for popup button
 
-  const getGyms = async (): Promise<fetchGyms[]> => {
-    try {
-      axios.defaults.headers.common["Origin"] = window.location.origin;
-
-      const response: AxiosResponse<{ gyms: fetchGyms[] }> = await axios.get(
-        "http://localhost:4000/gyms"
-      );
-      const gyms: fetchGyms[] = response.data.gyms;
-      console.log(gyms);
-      return gyms;
-    } catch (error) {
-      console.error(error);
-      return [];
-    }
-  };
-
-  const getImage = async (id: number) => {
-    const response = await fetch(
-      `https://apigw.stockholm.se/noauth/virtualhittaservicedmz/rest/serviceunits/${id}/image`
-    );
-    const jsonData = await response.json();
-    return jsonData.data.attributes.base64Data;
-  };
-
-  useEffect(() => {
-    if (positionGym.lat !== 0) {
-      getGyms().then(async (result) => {
-        console.log(positionGym);
-        const calculateDistance = (
-          origin: { lat: number; lng: number },
-          destination: { lat: number; lng: number }
-        ) => {
-          const R = 6371e3; // metres
-          const φ1 = (origin.lat * Math.PI) / 180; // φ, λ in radians
-          const φ2 = (destination.lat * Math.PI) / 180;
-          const Δφ = ((destination.lat - origin.lat) * Math.PI) / 180;
-          const Δλ = ((destination.lng - origin.lng) * Math.PI) / 180;
-
-          const a =
-            Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-            Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
-          const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-          const d = R * c; // in metres
-          return d;
-        };
-
-        const images = await Promise.all(
-          result /*.slice(0, 9)*/
-            .map((data) => getImage(data.id))
-        );
-
-        const gymsData = result
-          .map((data, index) => {
-            return {
-              id: data.id,
-              name: data.name,
-              address: data.address,
-              distance: calculateDistance(positionGym, data.coordinates),
-              imageData: images[index],
-              shortDescription: data.shortDescription,
-              description: data.description,
-            };
-          })
-        .sort((a, b) => a.distance - b.distance)
-        .slice(0, 9);
-        setGyms(gymsData);
-        
-        console.log(gyms);
-      });
-    }
-  }, [positionGym]);
-
-  if (!isLoaded || !positionGym.lat) {
+  if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
     return (
@@ -106,7 +32,7 @@ const GymCards = () => {
         <h3>{id}</h3>
         <hr className="titleHR" />
         <div className="gymCardsBody">
-          {gyms.map((gym, i) => (
+          {props.gyms.map((gym, i) => (
             <div key={i} className="gymContainer">
              
             
@@ -127,13 +53,13 @@ const GymCards = () => {
                       />
                   <button
                     className="directionsButton"
-                    onClick={() => getDirections()}
+                    
                   >
                     Get Directions
                   </button>
                   <button
                     className="closeButton"
-                    onClick={() => setGymCardOpen(null)}
+                    onClick={() => setGymCardOpen(0)}
                   >
                     Close
                   </button>

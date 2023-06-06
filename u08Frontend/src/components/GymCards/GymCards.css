@@ -3,7 +3,6 @@
     flex-direction: column;
     background-color: #fff;
     padding-top: 1px;
-    
     margin: auto;
 }
 
@@ -38,8 +37,7 @@ margin: auto;
     background-color: #e4e4e4; 
     border: 1px solid #aaa7a7;
     border-radius: 8px;
-    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.4);
-    
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.25);
     margin-bottom: 30px;
     height: auto;
     width: 350px;
@@ -77,7 +75,7 @@ margin: auto;
 }
 
 .gymH2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 600;
 }
 
@@ -95,6 +93,7 @@ margin: auto;
     position: relative;
     top: -12px;
     height: 100px;
+    margin-bottom: 10px;
 }
 
 .gymHR {
@@ -124,8 +123,48 @@ margin: auto;
     position: relative;
     top: 10px;
     width: 100px;
-
 }
+
+.dialogBox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    width: 60vw;
+    height: 80vh;
+    background-color: rgba(57, 172, 211, 0.85); 
+    border-radius: 8px;
+    box-shadow: 30px 30px 30px 0px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    z-index: 10;
+}
+
+.popupGymImage {
+    width: 30%;
+    margin: auto;
+}
+
+.closeButton {
+    background-color: #006ebf;
+    position: relative;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.15);
+    width: 150px;
+    color: #fff;
+    font-weight: 400;
+    border-radius: 80px;
+    height: 35px;
+}
+ .directionsButton {
+    background-color: #ff9549;
+    position: relative;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.15);
+    width: 230px;
+    color: #fff;
+    font-weight: 400;
+    border-radius: 80px;
+    height: 35px;
+ }
+
 
 @media (max-width: 913px) {
     .gymBody {

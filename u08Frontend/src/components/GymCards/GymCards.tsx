@@ -21,7 +21,7 @@ const GymCards = () => {
     address: string;
     coordinates: { lat: number; lng: number };
     shortDescription: string;
-    longDescription: string;
+    description: string;
   }
 
   const getGyms = async (): Promise<fetchGyms[]> => {
@@ -85,7 +85,7 @@ const GymCards = () => {
               distance: calculateDistance(positionGym, data.coordinates),
               imageData: images[index],
               shortDescription: data.shortDescription,
-              longDescription: data.longDescription,
+              description: data.description,
             };
           })
         .sort((a, b) => a.distance - b.distance)
@@ -116,7 +116,7 @@ const GymCards = () => {
                   <h2 className="">{gym.name}</h2>
                   <h3 className="">Address: {gym.address}</h3>
                   <h3 className="">{gym.shortDescription}</h3>
-                  <p>{gym.longDescription}</p>
+                  <p>{gym.description}</p>
                   <h3 className="">Distance:{" "}{`${(gym.distance / 1000).toFixed(
                         1
                       )} km`}</h3>

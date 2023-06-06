@@ -90,7 +90,7 @@ const MapRender = (props: {
             console.log("hi");
           }}
         />
-        {gyms.slice(0, 9).map((gym, i) => (
+        {gyms./*slice(0, 9).*/map((gym, i) => (
           <MarkerF
             key={i}
             position={gym.coordinates}

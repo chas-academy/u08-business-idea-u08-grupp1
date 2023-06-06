@@ -12,7 +12,7 @@ const Body = () => {
 
   const [data] = useGetData();
   if (!data.loaded || !isLoaded) {
-    return <div>Loading...</div>;
+    return <div className="body"><div>Loading...</div></div>;
   } else {
     return (
       <div className="body">

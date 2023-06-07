@@ -1,0 +1,158 @@
+.mobile-nav {
+  display: none;
+}
+
+.nav-bar {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+.logo {
+    height: 10vh;
+    margin-left: 19vw;
+}
+
+.pages ul {
+  display: flex;
+  height: 10vh;
+}
+
+.about-us {
+    padding-top: 2.8vh;
+    padding-left: 40px;
+}
+
+#search {
+    margin-right: 10px;
+}
+
+.search {
+    padding-top: 2.8vh;
+    text-align: center;
+}
+
+.nav-bar li:first-child {
+height: 10vh;
+width: 50vw;
+background-color: #fff;
+}
+
+.nav-bar li:nth-child(2) {
+    height: 10vh;
+    width: 10vw;
+    background-color: #333;
+}
+
+.nav-bar li:nth-child(3) {
+    height: 10vh;
+    width: 40vw;
+    background-color: #006ebf;
+}
+
+li a {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+li a:hover {
+  text-decoration: underline;
+}
+
+.icons {
+  color: #414040;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.mobile-pages i {
+    font-size: 25px;
+}
+
+.mobile-pages ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    height: 10vh;
+  }
+
+.mobile-pages li {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    text-align: center;
+    font-size: .7rem;
+    
+}
+
+@media (max-width: 1400px) {
+    .logo {
+        margin-left: 15vw;
+    }
+
+    .nav-bar li:first-child {
+        width: 50vw;
+        }
+        
+        .nav-bar li:nth-child(2) {
+            width: 15vw;
+        }
+        
+        .nav-bar li:nth-child(3) {
+            width: 35vw;
+        }
+
+        .about-us {
+            padding-left: 50px;
+        }
+}
+
+@media (max-width: 1281px) {
+    .logo {
+        margin-left: 12vw;
+    }
+        .about-us {
+            padding-left: 40px;
+        }
+}
+
+@media (max-width: 1100px) {
+    .logo {
+        margin-left: 5vw;
+    }
+
+    .nav-bar li:first-child {
+        width: 50vw;
+        }
+        
+        .nav-bar li:nth-child(2) {
+            width: 18vw;
+        }
+        
+        .nav-bar li:nth-child(3) {
+            width: 32vw;
+        }
+
+        .about-us {
+            padding-left: 40px;
+        }
+}
+
+@media (max-width: 913px) {
+  .nav-bar {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: block;
+  }
+
+  .mobile-nav {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 50;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}

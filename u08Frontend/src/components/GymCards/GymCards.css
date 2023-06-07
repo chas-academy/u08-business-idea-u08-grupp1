@@ -1,0 +1,177 @@
+.gymBody {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding-top: 1px;
+    margin: auto;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.titleHR {
+    background-color: #006ebf;
+    width: 7vw;
+    height: 7px;
+    margin: auto;
+    margin-top: -15px;
+    margin-bottom: 30px;
+}
+
+.gymCardsBody {
+display: flex;
+justify-content: space-evenly;
+flex-wrap: wrap;
+width: 80vw;
+margin: auto;
+}
+
+
+.gymCardOuter {
+    display: flex;
+    background-color: #e4e4e4; 
+    border: 1px solid #aaa7a7;
+    border-radius: 8px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.25);
+    margin-bottom: 30px;
+    height: auto;
+    width: 350px;
+} 
+
+.gymCardInner {
+    width: 330px;
+    margin: auto;
+} 
+
+.headerBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.gymImage {
+    margin-top: 13px;
+    border-radius: 8px;
+    width: 330px;
+    height: 200px;
+}
+
+.button {
+    background-color: #006ebf;
+    position: relative;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.15);
+    top: -15px;
+    left: 80px;
+    width: 150px;
+    color: #fff;
+    font-weight: 400;
+    border-radius: 80px;
+    height: 35px;
+}
+
+.gymH2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.gymButton {
+    height: 25px;
+}
+
+.gymName {
+    position: relative;
+    height: 50px;
+    top: -5px;
+}
+
+.shortDescription {
+    position: relative;
+    top: -12px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.gymHR {
+    background-color: #9e9696;
+    position: relative;
+    top: -22px;
+    height: 2px;
+    margin: auto;
+    width: 85%;
+}
+
+.gymBottomBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    top: -7px;
+    margin: 0px 10px 5px 10px;
+}
+
+.gymH3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.stars {
+    position: relative;
+    top: 10px;
+    width: 100px;
+}
+
+.dialogBox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    width: 60vw;
+    height: 80vh;
+    background-color: rgba(57, 172, 211, 0.85); 
+    border-radius: 8px;
+    box-shadow: 30px 30px 30px 0px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    z-index: 10;
+}
+
+.popupGymImage {
+    width: 30%;
+    margin: auto;
+}
+
+.closeButton {
+    background-color: #006ebf;
+    position: relative;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.15);
+    width: 150px;
+    color: #fff;
+    font-weight: 400;
+    border-radius: 80px;
+    height: 35px;
+}
+ .directionsButton {
+    background-color: #ff9549;
+    position: relative;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.15);
+    width: 230px;
+    color: #fff;
+    font-weight: 400;
+    border-radius: 80px;
+    height: 35px;
+ }
+
+
+@media (max-width: 913px) {
+    .gymBody {
+        background-color: #fff;
+        margin-top: -135px;
+        position: relative;
+        border-radius: 50px 50px 0 0;
+        padding-bottom: 40px;
+    }  
+}

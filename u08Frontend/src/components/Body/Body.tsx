@@ -1,15 +1,34 @@
+import { useLoadScript } from "@react-google-maps/api";
 import GymCards from "../GymCards/GymCards";
-import { Map } from "../Map";
+import GroupCards from "../GroupCards/GroupCards";
+import { Map } from "../Map/Map";
+import "./Body.css";
+import { useGetData } from "../../hooks/useGetData";
 
 const Body = () => {
-    return ( 
-        <div>
-            <Map />
-            <h2 className="text-3xl text-center mb-7 mt-9 font-semibold">Gyms near you</h2>
-            < GymCards />
-            <p>More</p>
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY,
+  });
+
+  const [data] = useGetData();
+  if (!data.loaded || !isLoaded) {
+    return <div className="body"><div>Loading...</div></div>;
+  } else {
+    return (
+      <div className="body">
+        <div className="map">
+            <Map gyms={data.gyms}/>
         </div>
-    )
-}
+
+        <GymCards gyms={data.gyms}/>
+       
+        <div>
+        <GroupCards />
+        </div>
+        
+      </div>
+    );
+  }
+};
 
 export default Body;

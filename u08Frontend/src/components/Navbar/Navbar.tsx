@@ -6,7 +6,7 @@ const Navbar = () => {
       <div className="nav-bar">
         <div className="pages">
           <ul>
-            <li><a href="#"><img src="./src/assets/images/SWC.png" className="logo" alt="SWC Logo"/></a></li>
+            <li><a href="#"><img src="/public/SWC.png" className="logo" alt="SWC Logo"/></a></li>
             <li className="search"><a href="#" aria-label="search"><i id="search" className="fas fa-search"></i>Search</a></li>
             <li className="about-us"><a href="#about-us" >About Us</a></li>
           </ul>

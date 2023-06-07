@@ -15,13 +15,9 @@ export const useGetDirections = (position: {lat: number, lng: number}, location:
           (result, status) => {
             if (status === google.maps.DirectionsStatus.OK) {
               setDirectionData(result)
-            } else {
-              console.error(`error fetching directions ${result}`);
-            }
+            } 
           }
         );
-      } else {
-        console.log('Please mark your destination in the map first!');
       } 
   };
 

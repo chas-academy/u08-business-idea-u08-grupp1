@@ -31,7 +31,6 @@ width: 80vw;
 margin: auto;
 }
 
-
 .gymCardOuter {
     display: flex;
     background-color: #e4e4e4; 
@@ -41,11 +40,16 @@ margin: auto;
     margin-bottom: 30px;
     height: auto;
     width: 350px;
+    transition: .3s ease-in-out;
 } 
+
+.gymCardOuter:hover {
+    scale: 1.04
+}
 
 .gymCardInner {
     width: 330px;
-    margin: auto;
+    margin: 0px 10px 0px 10px;
 } 
 
 .headerBlock {
@@ -54,11 +58,22 @@ margin: auto;
     justify-content: center;
 }
 
+.gymImageBlock {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
 .gymImage {
     margin-top: 13px;
     border-radius: 8px;
     width: 330px;
     height: 200px;
+    transition: .3s ease-in-out;
+}
+
+.gymCardOuter:hover .gymImageBlock .gymImage {
+    scale: 1.1;
 }
 
 .button {
@@ -127,33 +142,92 @@ margin: auto;
 
 .dialogBox {
     position: fixed;
-    top: 50%;
+    top: 44%;
     left: 50%;
     transform: translate(-50%, -45%);
-    width: 60vw;
-    height: 80vh;
-    background-color: rgba(57, 172, 211, 0.85); 
+    width: 45vw;
+    height: auto;
+    background-color: rgba(57, 172, 211, 0.93); 
     border-radius: 8px;
     box-shadow: 30px 30px 30px 0px rgba(0, 0, 0, 0.4);
     color: #fff;
     z-index: 10;
 }
 
+
 .popupGymImage {
-    width: 30%;
-    margin: auto;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.popupHeader {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 10px 10px 10px;
+}
+
+.popupH2 {
+    font-size: 2.2rem;
+    margin: auto 0;
+    text-align: left;
+}
+
+.popupH3 {
+    font-size: 1.6rem;
+    margin-top: -13px;
+}
+
+.popupRating {
+    margin: auto 0;
+}
+
+.popupBody {
+    margin: 0 10px;
+}
+
+.popupShortDescription {
+    margin: 10px 0 10px 0;
+}
+
+.popupSD {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.popupFooter {
+    margin: 15px 10px 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popupDistanceH3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.popupDistanceH2 {
+    font-size: 2.2rem;
+    margin: -10px auto;
 }
 
 .closeButton {
     background-color: #006ebf;
     position: relative;
     box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.15);
-    width: 150px;
+    width: 230px;
     color: #fff;
     font-weight: 400;
     border-radius: 80px;
     height: 35px;
+    transition: all 100ms ease-in;
 }
+
+.closeButton:hover {
+    transform: scale(1.1);
+    font-weight: 600;
+}
+
  .directionsButton {
     background-color: #ff9549;
     position: relative;
@@ -163,7 +237,14 @@ margin: auto;
     font-weight: 400;
     border-radius: 80px;
     height: 35px;
+    transition: all 100ms ease-in;
  }
+
+ .directionsButton:hover {
+    transform: scale(1.1);
+    font-weight: 600;
+}
+
 
 
 @media (max-width: 913px) {

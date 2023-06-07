@@ -36,7 +36,7 @@ export const Map = (props: { gyms: {
     return <div>Loading...</div>;
   } else {
     return (
-      <div className="map">
+      <div className="map" id="map">
       <div className="mapContainer">
         <GoogleMap
           zoom={10}

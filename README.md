@@ -38,7 +38,7 @@ We are six competent and professional web developers, designers and testers that
 The app will display the 9 gyms closest to the users position. The user may use the map to get direction and information about the gyms or scroll down to see our gym cards where images and information is displayed.
 
 # Documentation
-[Project documentation (OneNote)](https://1drv.ms/o/s!AtmJd2tDQ-CNgSu68NDxDSZbgdKF?e=r8u9x6)
+[Project documentation (OneNote)](https://1drv.ms/o/s!AtmJd2tDQ-CNgSu68NDxDSZbgdKF)
 
 [Business plan](https://docs.google.com/document/d/1w7-FuE6tZFyE6CDUOxONT7RMdXzNCmHFuLaj6N8IH1Q/edit?usp=sharing)
 

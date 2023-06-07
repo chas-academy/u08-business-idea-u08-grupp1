@@ -17,9 +17,9 @@ const Navbar = () => {
         <div className="mobile-pages">
           <ul>
             <li><a href="#" aria-label="home"><i className="fa-solid fa-house"></i></a>Home</li>
-            <li><a href="#" aria-label="references"><i className="fa-solid fa-user-group"></i></a>About Us</li>
-            <li><a href="#" aria-label="knowledge"><i className="fa-solid fa-search"></i></a>Search</li>
-            <li><a href="#" aria-label="portfolio"><i className="fa-solid fa-dumbbell"></i></a>Utegym</li>
+            <li><a href="#about-us" aria-label="about us"><i className="fa-solid fa-user-group"></i></a>About Us</li>
+            <li><a href="#" aria-label="search"><i className="fa-solid fa-search"></i></a>Search</li>
+            <li><a href="#gyms" aria-label="utegym"><i className="fa-solid fa-dumbbell"></i></a>Utegym</li>
             <li><a href="#" aria-label="profile"><i className="fa-solid fa-user"></i></a>Profile</li>
           </ul>
         </div>

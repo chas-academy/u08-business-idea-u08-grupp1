@@ -28,9 +28,8 @@ const GymCards = (props: {
     return <div>Loading...</div>;
   } else {
     return (
-      <div className="gymBody">
+      <div className="gymBody" id="gyms">
         <h2>Nearby Gyms</h2>
-        <h3>{id}</h3>
         <hr className="titleHR" />
         <div className="gymCardsBody">
           {props.gyms.map((gym, i) => (

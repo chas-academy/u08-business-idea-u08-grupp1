@@ -3,8 +3,6 @@
     padding-top: 10px;
 }
 
-
-
 .aboutUs {
     font-size: 1.3rem;
     margin: 0 10vw 80px 10vw;
@@ -107,9 +105,9 @@ button.pinterest {
     background-color: #d3263a;
 } 
 
-@media (max-width: 1200px) {
+@media (max-width: 1495px) {
 .groupCards {
-    width: 100vw;
+    width: 95vw;
 }
 }
 

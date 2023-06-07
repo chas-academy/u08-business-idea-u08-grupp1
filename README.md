@@ -50,4 +50,27 @@ The app will display the 9 gyms closest to the users position. The user may use 
 - https://github.com/khadizatulqubra
 - https://github.com/skojarduva
 
-# Licence
+## License
+
+The code in this repository is licensed under the MIT License.
+
+---
+
+## Attribution
+
+This project utilizes the following external APIs:
+
+- [Stockholm Stads Service API](https://apigw.stockholm.se/noauth/virtualhittaservicedmz/rest/serviceunits)
+- [Google Maps API](https://developers.google.com/maps)
+
+Please make sure to review and comply with the terms of use and licensing of these external APIs.
+
+---
+
+## Disclaimer
+
+This project is a school assignment and is provided as-is, without any warranties or guarantees of any kind. The creators of this project are not responsible for any misuse, damages, or consequences resulting from the use of this application.
+
+---
+
+Feel free to modify and adapt this license to fit your specific project and requirements.

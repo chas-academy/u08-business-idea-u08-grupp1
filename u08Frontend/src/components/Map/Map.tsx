@@ -1,14 +1,12 @@
 import {
   GoogleMap,
   MarkerF,
-  useLoadScript,
   DirectionsRenderer,
 } from "@react-google-maps/api";
 import { useGetGeolocation } from "../../hooks/useGetGeolocation";
 import { useGetDirections } from "../../hooks/useGetDirections";
 import { useEffect, useState } from "react";
 import "./Map.css"
-import axios, { AxiosResponse } from "axios";
 import { useClickedCardStore } from "../../stores/useClickedCardStore";
 
 export const Map = (props: { gyms: {
@@ -24,11 +22,15 @@ export const Map = (props: { gyms: {
   const [position] = useGetGeolocation();
   const [destination, setDestination] = useState({ lat: 0, lng: 0 });
   const [direction] = useGetDirections(position, destination);
-  const [setId] = useClickedCardStore((state:any) => [state.setId]);
+  const [setId, coordinates] = useClickedCardStore((state:any) => [state.setId, state.coordinates]);
 
   const mapContainerStyle = {
     height:'100%'
   };
+
+  useEffect(() => {
+    setDestination(coordinates);
+  }, [coordinates]);
 
   if (!position.lat) {
     return <div>Loading...</div>;

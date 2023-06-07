@@ -18,7 +18,7 @@ const GroupCards = () => {
     <div className="groupCards">
       <div className="card">
         <div className="card-image">
-          <img src="/src/assets/images/Arron-Reed.png" alt="Arron Reed" />
+          <img src="/Arron-Reed.png" alt="Arron Reed" />
         </div>
         <p className="name">Arron Reed</p>
         <p>FullStack Developer</p>
@@ -40,7 +40,7 @@ const GroupCards = () => {
 
       <div className="card">
         <div className="card-image">
-          <img src="/src/assets/images/Fredrik-Gullin.jfif" alt="Fredrik Gullin" />
+          <img src="/Fredrik-Gullin.jfif" alt="Fredrik Gullin" />
         </div>
         <p className="name">Fredrik Gullin</p>
         <p>ScumMaster</p>
@@ -62,7 +62,7 @@ const GroupCards = () => {
 
       <div className="card">
         <div className="card-image">
-          <img src="/src/assets/images/Victor-Hedegran.jfif" alt="Victor Hedegran" />
+          <img src="/Victor-Hedegran.jfif" alt="Victor Hedegran" />
         </div>
         <p className="name">Victor Hedegran</p>
         <p>FullStack Developer</p>
@@ -84,7 +84,7 @@ const GroupCards = () => {
 
       <div className="card">
         <div className="card-image">
-          <img src="/src/assets/images/Malin-Bragazzi.jfif" alt="Malin Bragazzi" />
+          <img src="/Malin-Bragazzi.jfif" alt="Malin Bragazzi" />
         </div>
         <p className="name">Malin Bragazzi</p>
         <p>FullStack Developer</p>
@@ -106,7 +106,7 @@ const GroupCards = () => {
 
       <div className="card">
         <div className="card-image">
-          <img src="/src/assets/images/Khadizatul-Qubra.jfif" alt="Khadizatul Qubra" />
+          <img src="/Khadizatul-Qubra.jfif" alt="Khadizatul Qubra" />
         </div>
         <p className="name">Khadizatul Qubra</p>
         <p>FullStack Developer</p>
@@ -128,7 +128,7 @@ const GroupCards = () => {
 
       <div className="card">
         <div className="card-image">
-          <img src="/src/assets/images/Vincent-Wigardt.jfif" alt="Vincent Wigardt" />
+          <img src="/Vincent-Wigardt.jfif" alt="Vincent Wigardt" />
         </div>
         <p className="name">Vincent Wigardt</p>
         <p>FullStack Developer</p>

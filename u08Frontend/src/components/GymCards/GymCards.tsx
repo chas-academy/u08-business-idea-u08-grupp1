@@ -1,28 +1,35 @@
 import { useLoadScript } from "@react-google-maps/api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./GymCards.css";
 import { useClickedCardStore } from "../../stores/useClickedCardStore";
 
-const GymCards = (props: {
-  gyms: {
-    id: number;
-    name: string;
-    address: string;
-    distance: number;
-    coordinates: { lat: number; lng: number };
-    imageData: string;
-    shortDescription: string;
-    description: string;
-  }[];
-}) => {
-  const [id] = useClickedCardStore((state: any) => [state.id]);
-  // sets the ID of the gymCard when button is clicked and <dialog> is Open
+const GymCards = (props: { gyms: {
+  id: number,
+  name: string,
+  address: string,
+  distance: number,
+  coordinates: { lat: number, lng: number },
+  imageData: string,
+  shortDescription: string,
+  description: string,
+}[] }) => {
+  
+  const [id, setId, setCoordinates] = useClickedCardStore((state: any) => [state.id, state.setId, state.setCoordinates]);
+  // sets the ID of the gymCard when button is clicked and <dialog> is Open 
+
   const [gymCardOpen, setGymCardOpen] = useState(0);
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY,
   });
 
+  const getDirections = (coordinates: {lat: number, lng: number}) => {
+    setCoordinates(coordinates);
+  };
+
   /* onClick={() => getDirections()} */ // onclick for popup button
+  useEffect(() => {
+    setGymCardOpen(id);
+  }, [id]);
 
   if (!isLoaded) {
     return <div>Loading...</div>;
@@ -80,7 +87,9 @@ const GymCards = (props: {
                     </div>
 
                     <div className="popupGetDirectionsButton">
-                      <button className="directionsButton">
+                      <button className="directionsButton"
+                        onClick={() => {getDirections(gym.coordinates); setGymCardOpen(0);}}
+                      >
                         Get Directions
                       </button>
                     </div>
@@ -88,7 +97,7 @@ const GymCards = (props: {
                     <div className="popupCloseButton">
                       <button
                         className="closeButton"
-                        onClick={() => setGymCardOpen(0)}
+                        onClick={() => {setGymCardOpen(0); setId(0);}}
                       >
                         Close
                       </button>

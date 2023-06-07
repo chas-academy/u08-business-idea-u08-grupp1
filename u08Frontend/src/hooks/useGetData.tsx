@@ -29,7 +29,7 @@ export const useGetData = () => {
       axios.defaults.headers.common["Origin"] = window.location.origin;
 
       const response: AxiosResponse<{ gyms: fetchGyms[] }> = await axios.get(
-        "http://localhost:4000/gyms"
+        "https://u08-business-idea-u08-grupp1-production.up.railway.app/gyms"
       );
       const gyms: fetchGyms[] = response.data.gyms;
       console.log(gyms);

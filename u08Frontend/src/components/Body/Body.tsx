@@ -12,7 +12,14 @@ const Body = () => {
 
   const [data] = useGetData();
   if (!data.loaded || !isLoaded) {
-    return <div className="body"><div>Loading...</div></div>;
+    return <div className="body">
+      <h2 className="PBh2">Website is Loading</h2>
+      <hr className="titleHR"/>
+      <p className="about-Us">Please be patient as SWC fetches your current location and calcualtes the nearest utegym to you</p>
+      <div>
+        <GroupCards />
+      </div>
+      </div>;
   } else {
     return (
       <div className="body">

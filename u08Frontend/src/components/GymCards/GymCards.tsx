@@ -1,5 +1,5 @@
 import { useLoadScript } from "@react-google-maps/api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./GymCards.css";
 import { useClickedCardStore } from "../../stores/useClickedCardStore";
 
@@ -14,14 +14,21 @@ const GymCards = (props: { gyms: {
   description: string,
 }[] }) => {
   
-  const [id] = useClickedCardStore((state: any) => [state.id]);
+  const [id, setId, setCoordinates] = useClickedCardStore((state: any) => [state.id, state.setId, state.setCoordinates]);
   // sets the ID of the gymCard when button is clicked and <dialog> is Open 
   const [gymCardOpen, setGymCardOpen] = useState(0);
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY,
   });
 
+  const getDirections = (coordinates: {lat: number, lng: number}) => {
+    setCoordinates(coordinates);
+  };
+
   /* onClick={() => getDirections()} */ // onclick for popup button
+  useEffect(() => {
+    setGymCardOpen(id);
+  }, [id]);
 
   if (!isLoaded) {
     return <div>Loading...</div>;
@@ -29,7 +36,6 @@ const GymCards = (props: { gyms: {
     return (
       <div className="gymBody">
         <h2>Nearby Gyms</h2>
-        <h3>{id}</h3>
         <hr className="titleHR" />
         <div className="gymCardsBody">
           {props.gyms.map((gym, i) => (
@@ -53,13 +59,13 @@ const GymCards = (props: { gyms: {
                       />
                   <button
                     className="directionsButton"
-                    
+                    onClick={() => {getDirections(gym.coordinates); setGymCardOpen(0);}}
                   >
                     Get Directions
                   </button>
                   <button
                     className="closeButton"
-                    onClick={() => setGymCardOpen(0)}
+                    onClick={() => {setGymCardOpen(0); setId(0);}}
                   >
                     Close
                   </button>

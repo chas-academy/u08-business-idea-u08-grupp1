@@ -32,10 +32,8 @@ export const useGetData = () => {
         "https://u08-business-idea-u08-grupp1-production.up.railway.app/gyms"
       );
       const gyms: fetchGyms[] = response.data.gyms;
-      console.log(gyms);
       return gyms;
     } catch (error) {
-      console.error(error);
       return [];
     }
   };
@@ -52,7 +50,6 @@ export const useGetData = () => {
   useEffect(() => {
     if (positionGym.lat !== 0) {
       getGyms().then(async (result) => {
-        console.log(positionGym);
         const calculateDistance = (
           origin: { lat: number; lng: number },
           destination: { lat: number; lng: number }
@@ -93,8 +90,6 @@ export const useGetData = () => {
         .sort((a, b) => a.distance - b.distance)
         .slice(0, 9);
         setData({ gyms: gymsData, loaded: true });
-        
-        console.log(data);
       });
     }
   }, [positionGym]);

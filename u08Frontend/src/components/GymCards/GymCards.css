@@ -151,9 +151,19 @@ margin: auto;
     border-radius: 8px;
     box-shadow: 30px 30px 30px 0px rgba(0, 0, 0, 0.4);
     color: #fff;
-    z-index: 10;
+    z-index: 100;
 }
 
+.dialogBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px); /* Adjust the blur value as needed */
+    z-index: 100;
+  }
 
 .popupGymImage {
     width: 100%;
@@ -245,9 +255,61 @@ margin: auto;
     font-weight: 600;
 }
 
+@media (max-width: 1500px) {
+    
+.dialogBox {
+    width: 55vw;
+}
 
+.popupDistanceH3 {
+    font-size: 0.9rem;
+}
 
-@media (max-width: 913px) {
+.popupDistanceH2 {
+    font-size: 2rem;
+}
+
+.closeButton {
+    width: 200px;
+}
+
+ .directionsButton {
+    width: 200px;
+ }
+}
+
+@media (max-width: 1300px) {
+    
+    .dialogBox {
+        width: 65vw;
+    }
+}
+
+@media (max-width: 1100px) {
+    
+    .dialogBox {
+        width: 75vw;
+    }
+    
+    .popupDistanceH3 {
+        font-size: 0.9rem;
+    }
+    
+    .popupDistanceH2 {
+        font-size: 2rem;
+    }
+    
+    .closeButton {
+        width: 200px;
+    }
+    
+     .directionsButton {
+        width: 200px;
+     }
+    }
+    
+
+@media (max-width: 940px) {
     .gymBody {
         background-color: #fff;
         margin-top: -135px;
@@ -255,4 +317,231 @@ margin: auto;
         border-radius: 50px 50px 0 0;
         padding-bottom: 40px;
     }  
+
+    .dialogBox {
+        width: 85vw;
+    }
+        
+    .popupDistanceH3 {
+            font-size: 0.8rem;
+        }
+        
+        .popupDistanceH2 {
+            font-size: 1.8rem;
+        }
+        
+        .closeButton {
+            width: 180px;
+        }
+        
+         .directionsButton {
+            width: 180px;
+         }
+       
+}
+
+@media (max-width: 750px) {
+   
+    .popupDistanceH3 {
+            font-size: 0.8rem;
+        }
+        
+        .popupDistanceH2 {
+            font-size: 1.8rem;
+        }
+        
+        .closeButton {
+            width: 150px;
+        }
+        
+         .directionsButton {
+            width: 150px;
+         }
+       
+}
+
+@media (max-width: 690px) {
+    .dialogBox {
+        width: 80vw;
+    }
+     
+    .popupHeader {
+        display: flex;
+        justify-content: space-between;
+        margin: 8px 8px 8px 8px;
+    }
+    
+    .popupH2 {
+        font-size: 1.6rem;
+    }
+    
+    .popupH3 {
+        font-size: 1.1rem;
+        margin-top: -8px;
+    }
+    
+    .popupRating {
+        width: 120px;
+    }
+    
+    .popupShortDescription {
+        margin: 10px 0 10px 0;
+    }
+    
+    .popupSD {
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+    
+    .popupLongDescription {
+font-size: 0.8rem;
+    }
+
+    .popupFooter {
+        margin: 10px 0px 0px 10px;
+    }
+    
+    .popupDistanceH3 {
+        font-size: 0.0001rem;
+    }
+    
+    .popupDistanceH2 {
+        font-size: 1.6rem;
+        margin: -10px auto;
+    }
+    
+    .closeButton {
+        width: 110px;
+        height: 30px;
+        transition: none;
+        font-size: .8rem;
+    }
+    
+    .closeButton:hover {
+        transform: none;
+        font-weight: 600;
+    }
+    
+     .directionsButton {
+        width: 110px;
+        height: 30px;
+        transition: none;
+        font-size: .8rem;
+     }
+    
+     .directionsButton:hover {
+        transform: none;
+        font-weight: 600;
+    }
+       
+}
+
+@media (max-width: 500px) {
+
+    .gymCardOuter {
+        width: 85vw;
+        transition: .3s ease-in-out;
+    } 
+
+    .gymCardInner {
+        width: 80vw;
+        margin: 0px 10px 0px 10px;
+    } 
+
+    .gymImage {
+        width: 80vw;
+        height: 230px;
+        transition: .3s ease-in-out;
+    }
+    
+    .button {
+        box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.15);
+        top: -20px;
+        left: 117px;
+        width: 150px;
+        color: #fff;
+        font-weight: 400;
+        border-radius: 80px;
+        height: 35px;
+    }
+
+    .dialogBox {
+        width: 85vw;
+        top: 43%;
+        left: 50%;
+        transform: translate(-50%, -45%);
+        padding: 10px;
+    }
+
+    .popupHeader {
+        margin: 3px 0px;
+    }
+    
+    .popupH2 {
+        font-size: 1.1rem;
+    }
+    
+    .popupH3 {
+        font-size: 0.7rem;
+        margin-top: -2px;
+    }
+    
+    .popupRating {
+        width: 90px;
+    }
+    
+    .popupShortDescription {
+        margin: 5px 0;
+    }
+    
+    .popupSD {
+        font-size: 0.6rem;
+        font-weight: 600;
+    }
+    
+    .popupLongDescription {
+        font-size: 0.6rem;
+    }
+
+    .popupFooter {
+        display: flex;
+        flex-direction: column;
+        margin: 3px 0px 0px 10px;
+    }
+    
+    .popupDistanceH3 {
+        font-size: 0.8rem;
+    }
+    
+    .popupDistanceH2 {
+        font-size: 1.5rem;
+        margin: -7px auto;
+    }
+    
+    .closeButton {
+        width: 240px;
+        height: 35px;
+        transition: none;
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
+    
+    .closeButton:hover {
+        transform: none;
+        font-weight: 600;
+    }
+    
+     .directionsButton {
+        width: 240px;
+        height: 35px;
+        transition: none;
+        font-size: 1rem;
+        margin-bottom: 0px;
+     }
+    
+     .directionsButton:hover {
+        transform: none;
+        font-weight: 600;
+    }
+       
 }

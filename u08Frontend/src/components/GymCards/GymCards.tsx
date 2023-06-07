@@ -16,7 +16,6 @@ const GymCards = (props: { gyms: {
   
   const [id, setId, setCoordinates] = useClickedCardStore((state: any) => [state.id, state.setId, state.setCoordinates]);
   // sets the ID of the gymCard when button is clicked and <dialog> is Open 
-
   const [gymCardOpen, setGymCardOpen] = useState(0);
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY,
@@ -42,6 +41,7 @@ const GymCards = (props: { gyms: {
           {props.gyms.map((gym, i) => (
             <div key={i} className="gymContainer">
               {gymCardOpen === gym.id && (
+                <div className="dialogBackground">
                 <dialog open className="dialogBox">
                   <div className="popupImage">
                     <img
@@ -103,7 +103,9 @@ const GymCards = (props: { gyms: {
                       </button>
                     </div>
                   </div>
+                  
                 </dialog>
+                </div>
               )}
 
               <div className="gymCardOuter">

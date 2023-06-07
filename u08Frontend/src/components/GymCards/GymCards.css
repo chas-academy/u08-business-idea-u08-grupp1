@@ -50,6 +50,7 @@ margin: auto;
 .gymCardInner {
     width: 330px;
     margin: 0px 10px 0px 10px;
+    margin-bottom: -20px;
 } 
 
 .headerBlock {
@@ -114,7 +115,7 @@ margin: auto;
 .gymHR {
     background-color: #9e9696;
     position: relative;
-    top: -22px;
+    top: -42px;
     height: 2px;
     margin: auto;
     width: 85%;
@@ -125,8 +126,8 @@ margin: auto;
     flex-direction: row;
     justify-content: space-between;
     position: relative;
-    top: -7px;
-    margin: 0px 10px 5px 10px;
+    top: -30px;
+    margin: 0px 10px 0 10px;
 }
 
 .gymH3 {

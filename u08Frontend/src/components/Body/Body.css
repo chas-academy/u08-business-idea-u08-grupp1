@@ -1,9 +1,15 @@
 .body {
     padding-top: 10vh;
+    background-color: #e4e4e4;
 }
 
 .map {
     background-color: #eee;
+}
+
+.about-Us {
+        font-size: 1.3rem;
+        margin: 0 10vw 40px 10vw;
 }
 
 @media (max-width: 913px) {

@@ -2,7 +2,17 @@ import "./GroupCards.css";
 
 const GroupCards = () => {
   return (
-    <div className="team">
+    <div className="team" id="about-us">
+
+  <h2>About Us</h2>
+  <hr className="titleHR"/>
+  <div className="aboutUs">
+    <p>This is a fullstack school project created with react, node-express and a mongoDB. The assignment was to create an application based upon a business idea. We have decided to make an application that leads a user to the closest outdoor gym, located in the Stockholm area.</p>
+    <p>We achieved this by using the Stockholm Service API and the Google Maps API.</p>
+    <p>This application is not inteded for commercial use of any kind.</p>
+  </div>
+  
+
         <h2>Meet The Team</h2>
         <hr className="titleHR" />
     <div className="groupCards">

@@ -3,6 +3,13 @@
     padding-top: 10px;
 }
 
+
+
+.aboutUs {
+    font-size: 1.3rem;
+    margin: 0 10vw 80px 10vw;
+}
+
 .groupCards {
     width: 72vw;
     margin: auto;

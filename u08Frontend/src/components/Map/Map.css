@@ -3,13 +3,13 @@
     width: 62vw;
     margin: auto;
     padding-top: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 32px;
 }
 
 @media (max-width: 913px) {
     .mapContainer {
         width: 100vw;
         padding-top: 0px;
-        background-color: #45604d;
+        background-color: #bbe2c6;
     }
 }

@@ -3,19 +3,20 @@ import { useState } from "react";
 import "./GymCards.css";
 import { useClickedCardStore } from "../../stores/useClickedCardStore";
 
-const GymCards = (props: { gyms: {
-  id: number,
-  name: string,
-  address: string,
-  distance: number,
-  coordinates: { lat: number, lng: number },
-  imageData: string,
-  shortDescription: string,
-  description: string,
-}[] }) => {
-  
+const GymCards = (props: {
+  gyms: {
+    id: number;
+    name: string;
+    address: string;
+    distance: number;
+    coordinates: { lat: number; lng: number };
+    imageData: string;
+    shortDescription: string;
+    description: string;
+  }[];
+}) => {
   const [id] = useClickedCardStore((state: any) => [state.id]);
-  // sets the ID of the gymCard when button is clicked and <dialog> is Open 
+  // sets the ID of the gymCard when button is clicked and <dialog> is Open
   const [gymCardOpen, setGymCardOpen] = useState(0);
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY,
@@ -34,38 +35,68 @@ const GymCards = (props: { gyms: {
         <div className="gymCardsBody">
           {props.gyms.map((gym, i) => (
             <div key={i} className="gymContainer">
-             
-            
               {gymCardOpen === gym.id && (
                 <dialog open className="dialogBox">
-                  <img src={`data:image/jpeg;base64,${gym.imageData}`} className="popupGymImage" alt="Utegym"/>
-                  <h2 className="">{gym.name}</h2>
-                  <h3 className="">Address: {gym.address}</h3>
-                  <h3 className="">{gym.shortDescription}</h3>
-                  <p>{gym.description}</p>
-                  <h3 className="">Distance:{" "}{`${(gym.distance / 1000).toFixed(
-                        1
-                      )} km`}</h3>
-                  <h3>Rating:</h3><img
+                  <div className="popupImage">
+                    <img
+                      src={`data:image/jpeg;base64,${gym.imageData}`}
+                      className="popupGymImage"
+                      alt="Utegym"
+                    />
+                  </div>
+
+                  <div className="popupHeader">
+                    <div className="popupGymName">
+                      <h2 className="popupH2">{gym.name}</h2>
+                      <h3 className="popupH3">{gym.address}</h3>
+                    </div>
+
+                    <div className="popupRating">
+                      <img
                         src="/src/assets/images/5stars.png"
                         alt="Rating"
-                        className="stars"
+                        className="popupStars"
                       />
-                  <button
-                    className="directionsButton"
-                    
-                  >
-                    Get Directions
-                  </button>
-                  <button
-                    className="closeButton"
-                    onClick={() => setGymCardOpen(0)}
-                  >
-                    Close
-                  </button>
+                    </div>
+                  </div>
+
+                  <div className="popupBody">
+                    <div className="popupShortDescription">
+                      <h3 className="popupSD">{gym.shortDescription}</h3>
+                    </div>
+
+                    <div className="popupLongDescription">
+                      {gym.description}
+                    </div>
+                  </div>
+
+                  <div className="popupFooter">
+                    <div className="popupDistance">
+                      <h3 className="popupDistanceH3">
+                        Distance from Current Location
+                      </h3>
+                      <h2 className="popupDistanceH2">{`${(
+                        gym.distance / 1000
+                      ).toFixed(1)} km`}</h2>
+                    </div>
+
+                    <div className="popupGetDirectionsButton">
+                      <button className="directionsButton">
+                        Get Directions
+                      </button>
+                    </div>
+
+                    <div className="popupCloseButton">
+                      <button
+                        className="closeButton"
+                        onClick={() => setGymCardOpen(0)}
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
                 </dialog>
               )}
-
 
               <div className="gymCardOuter">
                 <div className="gymCardInner">

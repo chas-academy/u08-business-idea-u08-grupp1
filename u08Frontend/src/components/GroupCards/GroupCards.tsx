@@ -3,7 +3,8 @@ import "./GroupCards.css";
 const GroupCards = () => {
   return (
     <div className="team" id="about-us">
-      <h2>About Us</h2>
+      <div className="About-Us">
+    <h2>About Us</h2>
       <hr className="titleHR" />
       <div className="aboutUs">
         <p>
@@ -18,7 +19,7 @@ const GroupCards = () => {
         </p>
         <p>This application is not inteded for commercial use of any kind.</p>
       </div>
-
+      </div>
       <h2>Meet The Team</h2>
       <hr className="titleHR" />
       <div className="groupCards">
